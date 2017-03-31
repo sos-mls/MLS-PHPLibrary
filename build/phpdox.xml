@@ -7,7 +7,7 @@
 <bootstrap />
 
 <!-- A phpDox project to process, you can have multiple projects in one config file -->
-<project name="deadbody-php" source="${basedir}/../src/protected" workdir="${basedir}/phpdox/xml">
+<project name="deadbody-php" source="${basedir}/../src/" workdir="${basedir}/phpdox/xml">
     <!--  @name    - The name of the project -->
     <!--  @source  - The source directory of the application to process -->
     <!--  @workdir - The directory to store the xml data files in -->
@@ -40,8 +40,6 @@
 
         <!--  <include / exclude filter for filelist generator, mask must follow fnmatch() requirements  -->
         <include mask="*.php" />
-        <exclude mask="**extensions**" />
-        <exclude mask="**runtime**" />
         <exclude mask="**vendor**" />
         <!--  How to handle inheritance -->
         <inheritance resolve="true">
