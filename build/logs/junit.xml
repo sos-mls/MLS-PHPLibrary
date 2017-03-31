@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="MILFPHP" tests="3" assertions="1" failures="0" errors="0" time="0.001591">
+    <testsuite name="UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManagerTest.php" tests="2" assertions="1" failures="0" errors="0" time="0.001260">
+      <testsuite name="UrlManagerTest::test_createUrl" tests="1" assertions="1" failures="0" errors="0" time="0.000819">
+        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000819"/>
+      </testsuite>
+      <testcase name="test_parseUrl" class="UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManagerTest.php" line="50" assertions="0" time="0.000441"/>
+    </testsuite>
+    <testsuite name="MILFPHP\Test\WebTestCase" file="/Users/Fuzzy/milf/milfphp/tests/WebTestCase.php" tests="1" assertions="0" failures="0" errors="0" time="0.000331">
+      <testcase name="test_true" class="MILFPHP\Test\WebTestCase" file="/Users/Fuzzy/milf/milfphp/tests/WebTestCase.php" line="21" assertions="0" time="0.000331"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
