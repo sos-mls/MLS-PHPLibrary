@@ -22,24 +22,24 @@ class Reflection
 
 	/**
 	 * Calls the method of a specified class.
-	 * 
-	 * Passes the list of arguments as parameters to the method. If an object is 
-	 * sent then it associates that method (if its not static)with the object to 
+	 *
+	 * Passes the list of arguments as parameters to the method. If an object is
+	 * sent then it associates that method (if its not static)with the object to
 	 * allow the method to alter its (the objects)state.
 	 *
 	 * @param string $method_name The method to call inside of a class.
-	 * @param string $class_name The name of the class to access, namespace 
-	 *                           and all. If left blank then the class/object 
+	 * @param string $class_name The name of the class to access, namespace
+	 *                           and all. If left blank then the class/object
 	 *                           that called this method is used.
 	 * @param array  $args The arguments to send to the method.
-	 * @param null 	 $object THe object to use when calling the method.
+	 * @param null   $object THe object to use when calling the method.
 	 * @return mixed The result of the method being called.
 	 */
 	public static function callMethod(
-		$method_name = "", 
-		$class_name = null, 
-		array $args = [], 
-		&$object = null		
+		$method_name = "",
+		$class_name = null,
+		array $args = [],
+		&$object = null
 	) {
 		$method = self::getReflectionMethod($method_name, $class_name);
 
@@ -58,15 +58,15 @@ class Reflection
 	 * Gets the property 
 	 *
 	 * @param string $property_name The property to access inside of a class.
-	 * @param string $class_name The name of the class to access, namespace 
-	 *                           and all. If left blank then the class/object 
+	 * @param string $class_name The name of the class to access, namespace
+	 *                           and all. If left blank then the class/object
 	 *                           that called this method is used.
-	 * @param null 	 $object THe object to use when calling the function.
+	 * @param null   $object THe object to use when calling the function.
 	 * @return mixed The property contained in the object.
 	 */
 	public static function getProperty(
-		$property_name = "", 
-		$class_name = null, 
+		$property_name = "",
+		$class_name = null,
 		&$object = null
 	) {
 		$property = self::getReflectionProperty($property_name, $class_name);
@@ -83,16 +83,16 @@ class Reflection
 	 * Sets the property value
 	 *
 	 * @param string $property_name The property to access inside of a class.
-	 * @param string $class_name The name of the class to access, namespace 
-	 *                           and all. If left blank then the class/object 
+	 * @param string $class_name The name of the class to access, namespace
+	 *                           and all. If left blank then the class/object
 	 *                           that called this method is used.
 	 * @param null   $object The object to use when calling the function.
 	 * @param mixed  $new_value The new value of the property.
 	 */
 	public static function setProperty(
-		$property_name = "", 
-		$class_name = null, 
-		&$object = null, 
+		$property_name = "",
+		$class_name = null,
+		&$object = null,
 		$new_value = ""
 	) {
 		$property = self::getReflectionProperty($property_name, $class_name);
@@ -125,8 +125,8 @@ class Reflection
 	 * to get the class name that called this class.
 	 *
 	 * @param string $method_name The method to retrieve inside of a class.
-	 * @param string $class_name The name of the class to access, namespace 
-	 *                           and all. If left blank then the class/object 
+	 * @param string $class_name The name of the class to access, namespace
+	 *                           and all. If left blank then the class/object
 	 *                           that called this method is used.
 	 * @return \ReflectionMethod The method asked for.
 	 */
@@ -151,11 +151,11 @@ class Reflection
 	/**
 	 * Returns the reflection property object.
 	 *
-	 * @param string $property_name
-	 * @param null   $class_name
-	 * @param null   $object
-	 *
-	 * @return \ReflectionProperty
+     * @param string $method_name The method to retrieve inside of a class.
+     * @param string $class_name The name of the class to access, namespace
+     *                           and all. If left blank then the class/object
+     *                           that called this method is used.
+	 * @return \ReflectionProperty The property asked for.
 	 */
 	private static function getReflectionProperty($property_name = "", $class_name = null)
 	{
@@ -182,7 +182,7 @@ class Reflection
 	 * Returns the class name that called this current class. If not available
 	 * it will return the name of the current class.
 	 * 
-	 * @return string
+	 * @return string The class name
 	 */
 	private static function getCalledClassName()
 	{
