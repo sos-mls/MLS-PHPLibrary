@@ -3,16 +3,18 @@
 /**
  * Contains the UrlManagerTest class.
  *
- * @package MILF\Test
+ * @package Common\Test
  * @author  Christian Micklisch <christian.micklisch@successwithsos.com>
  */
 
-namespace MILF\Test;
+namespace Common\Test;
 
-use MILF\UrlManager;
+use Common\UrlManager;
 
 /**
- * Tests general functionality for the UrlManager inside of the MILF namespace
+ * UrlManagerTest class. A PHPUnit Test case class.
+ * 
+ * Tests general functionality for the UrlManager inside of the Common namespace
  * 
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  */

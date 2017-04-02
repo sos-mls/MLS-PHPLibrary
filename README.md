@@ -1,6 +1,14 @@
-# MILFPHP #
+# CommonPHP #
 
 A common php library between php projects
+
+## The Tools Used ##
+
+During the creation of this Common library I used:
+
+* [A vagrant box for Testing and Static Code Analysis](https://github.com/fufu70/PHP-Jenkins-Breakfast-Box)
+
+* A Local instance of [PHPUnit 4.8](https://phpunit.de/)
 
 ## Testing Locally ##
 

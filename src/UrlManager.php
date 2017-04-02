@@ -3,11 +3,11 @@
 /**
  * Contains the UrlManager class.
  *
- * @package MILF
+ * @package Common
  * @author  John Salis <jsalis@stetson.edu>
  */
 
-namespace MILF;
+namespace Common;
 
 /**
  * The UrlManager class is used to parse urls with camel case into hyphenated urls.

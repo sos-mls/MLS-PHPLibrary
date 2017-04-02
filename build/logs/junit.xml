@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="MILFPHP" tests="5" assertions="5" failures="0" errors="0" time="0.001513">
-    <testsuite name="MILF\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManagerTest.php" tests="5" assertions="5" failures="0" errors="0" time="0.001513">
-      <testsuite name="MILF\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.000969">
-        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000502"/>
-        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000246"/>
-        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000221"/>
+  <testsuite name="MILFPHP" tests="8" assertions="11" failures="0" errors="0" time="0.004980">
+    <testsuite name="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" tests="3" assertions="6" failures="0" errors="0" time="0.002445">
+      <testcase name="test_method" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="33" assertions="2" time="0.000954"/>
+      <testcase name="test_private_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="43" assertions="2" time="0.000934"/>
+      <testcase name="test_static_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="55" assertions="2" time="0.000557"/>
+    </testsuite>
+    <testsuite name="Common\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManager.php" tests="5" assertions="5" failures="0" errors="0" time="0.002535">
+      <testsuite name="Common\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.001581">
+        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000670"/>
+        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000475"/>
+        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000436"/>
       </testsuite>
-      <testsuite name="MILF\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.000544">
-        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000311"/>
-        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000233"/>
+      <testsuite name="Common\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.000954">
+        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000531"/>
+        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000423"/>
       </testsuite>
     </testsuite>
   </testsuite>
