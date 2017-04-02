@@ -30,10 +30,10 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * Tests calling a private function in the current class.
 	 */
-	public function test_method() {
+	public function test_callMethod() {
 
-		$this->assertEquals(self::PRIVATE_DUMMY_RESULT, Reflection::call_method('private_dummy_function', null, [], $this));
-		$this->assertEquals(self::STATIC_DUMMY_RESULT, Reflection::call_method('static_dummy_function', null, []));
+		$this->assertEquals(self::PRIVATE_DUMMY_RESULT, Reflection::callMethod('private_dummy_function', null, [], $this));
+		$this->assertEquals(self::STATIC_DUMMY_RESULT, Reflection::callMethod('static_dummy_function', null, []));
 	}
 
 
@@ -44,9 +44,9 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
 		$this->private_property = 'not_set';
 		$value = 'is_set';
 
-		$this->assertNotEquals($value, Reflection::get_property('private_property', null, $this));
-		Reflection::set_property('private_property', null, $this, $value);
-		$this->assertEquals($value, Reflection::get_property('private_property', null, $this));
+		$this->assertNotEquals($value, Reflection::getProperty('private_property', null, $this));
+		Reflection::setProperty('private_property', null, $this, $value);
+		$this->assertEquals($value, Reflection::getProperty('private_property', null, $this));
 	}
 
 	/**
@@ -56,9 +56,9 @@ class ReflectionTest extends \PHPUnit_Framework_TestCase
 		self::$static_property = 'not_set';
 		$value = 'is_set';
 
-		$this->assertNotEquals($value, Reflection::get_property('static_property', null, $this));
-		Reflection::set_property('static_property', null, $this, $value);
-		$this->assertEquals($value, Reflection::get_property('static_property', null, $this));
+		$this->assertNotEquals($value, Reflection::getProperty('static_property', null, $this));
+		Reflection::setProperty('static_property', null, $this, $value);
+		$this->assertEquals($value, Reflection::getProperty('static_property', null, $this));
 	}
 
 	/**

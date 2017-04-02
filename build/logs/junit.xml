@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="MILFPHP" tests="8" assertions="11" failures="0" errors="0" time="0.004980">
-    <testsuite name="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" tests="3" assertions="6" failures="0" errors="0" time="0.002445">
-      <testcase name="test_method" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="33" assertions="2" time="0.000954"/>
-      <testcase name="test_private_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="43" assertions="2" time="0.000934"/>
-      <testcase name="test_static_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="55" assertions="2" time="0.000557"/>
+  <testsuite name="MILFPHP" tests="9" assertions="11" failures="1" errors="0" time="0.004504">
+    <testsuite name="Common\Test\ApiControllerTest" file="/Users/Fuzzy/milf/milfphp/tests/ApiController.php" tests="1" assertions="0" failures="1" errors="0" time="0.001484">
+      <testcase name="Warning" assertions="0" time="0.001484">
+        <failure type="PHPUnit_Framework_AssertionFailedError">Warning
+No tests found in class "Common\Test\ApiControllerTest".
+
+</failure>
+      </testcase>
     </testsuite>
-    <testsuite name="Common\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManager.php" tests="5" assertions="5" failures="0" errors="0" time="0.002535">
-      <testsuite name="Common\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.001581">
-        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000670"/>
-        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000475"/>
-        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000436"/>
+    <testsuite name="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" tests="3" assertions="6" failures="0" errors="0" time="0.001212">
+      <testcase name="test_callMethod" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="33" assertions="2" time="0.000432"/>
+      <testcase name="test_private_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="43" assertions="2" time="0.000447"/>
+      <testcase name="test_static_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="55" assertions="2" time="0.000333"/>
+    </testsuite>
+    <testsuite name="Common\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManager.php" tests="5" assertions="5" failures="0" errors="0" time="0.001808">
+      <testsuite name="Common\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.001055">
+        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000420"/>
+        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000293"/>
+        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000342"/>
       </testsuite>
-      <testsuite name="Common\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.000954">
-        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000531"/>
-        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000423"/>
+      <testsuite name="Common\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.000753">
+        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000484"/>
+        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000269"/>
       </testsuite>
     </testsuite>
   </testsuite>
