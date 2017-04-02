@@ -19,8 +19,8 @@ namespace Common;
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  * @link   http://www.restapitutorial.com
  */
-class ApiController extends \CController
-{
+class ApiController extends \CController {
+    
     // naming retreived from: http://www.restapitutorial.com/httpstatuscodes.html
     private $codes = [
         100 => 'Continue',
@@ -80,22 +80,17 @@ class ApiController extends \CController
     {
         $this->generateHeader($status);
 
-        if ($status == 200) 
-        {
+        if ($status == 200) {
             echo CJSON::encode($data);
 
-            foreach (Yii::app()->log->routes as $route) 
-            {
-                if($route instanceof CWebLogRoute) 
-                {
+            foreach (Yii::app()->log->routes as $route) {
+                if ($route instanceof CWebLogRoute) {
                     $route->enabled = false; // disable any weblogroutes
                 }
             }
 
             Yii::app()->end();
-        } 
-        else 
-        {
+        } else {
             echo CJSON::encode($data);
             Yii::app()->end();
         }
@@ -128,12 +123,9 @@ class ApiController extends \CController
     {
 
         $append_redirect = str_replace('/' . $controller_name, '', $_SERVER['REDIRECT_URL']);
-        if (strpos($append_redirect, '/') !== false && empty($_GET))
-        {
+        if (strpos($append_redirect, '/') !== false && empty($_GET)) {
             return str_replace('/', '', $append_redirect);
-        }
-        else
-        {
+        } else {
             return false;
         }
     }

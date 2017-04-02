@@ -71,8 +71,7 @@ class Reflection
 	) {
 		$property = self::getReflectionProperty($property_name, $class_name);
 
-		if ($property->isStatic())
-		{
+		if ($property->isStatic()) {
 			$object = null;
 		}
 
@@ -97,12 +96,9 @@ class Reflection
 	) {
 		$property = self::getReflectionProperty($property_name, $class_name);
 
-		if ($property->isStatic())
-		{
+		if ($property->isStatic()) {
 			$property->setValue($new_value);
-		}
-		else
-		{
+		} else {
 			$property->setValue($object, $new_value);
 		}
 	}
@@ -132,16 +128,14 @@ class Reflection
 	 */
 	private static function getReflectionMethod($method_name = "", $class_name = null)
 	{
-		if (is_null($class_name))
-		{
+		if (is_null($class_name)) {
 			$class_name = self::getCalledClassName();
 		}
 
 		$reflection = new \ReflectionClass($class_name);
 		$method = $reflection->getMethod($method_name);
 
-		if ($method->isPrivate())
-		{
+		if ($method->isPrivate()) {
 			$method->setAccessible(true);
 		}
 
@@ -159,16 +153,14 @@ class Reflection
 	 */
 	private static function getReflectionProperty($property_name = "", $class_name = null)
 	{
-		if (is_null($class_name))
-		{
+		if (is_null($class_name)) {
 			$class_name = self::getCalledClassName();
 		}
 
 		$reflection = new \ReflectionClass($class_name);
 		$property = $reflection->getProperty($property_name);
 
-		if ($property->isPrivate())
-		{
+		if ($property->isPrivate()) {
 			$property->setAccessible(true);
 		}
 
@@ -188,10 +180,8 @@ class Reflection
 	{
 		$traces = debug_backtrace();
 
-		foreach ($traces as $trace)
-		{
-			if ($trace['class'] !== get_class())
-			{
+		foreach ($traces as $trace) {
+			if ($trace['class'] !== get_class()) {
 				return $trace['class'];
 			}
 		}
