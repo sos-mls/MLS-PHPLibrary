@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contains the ApiController class, simplifies rendering and reading as a 
+ * Contains the ApiController class, simplifies rendering and reading as a
  * controller.
  *
  * @package Common
@@ -20,7 +20,7 @@ namespace Common;
  * @link   http://www.restapitutorial.com
  */
 class ApiController extends \CController {
-    
+
     // naming retreived from: http://www.restapitutorial.com/httpstatuscodes.html
     private $codes = [
         100 => 'Continue',
@@ -76,7 +76,7 @@ class ApiController extends \CController {
      * @param  array    $data   The data to be echoed.
      * @param  integer  $status The HTTP status.
      */
-    protected function renderJSON($data, $status = 200) 
+    protected function renderJSON($data, $status = 200)
     {
         $this->generateHeader($status);
 
@@ -104,22 +104,22 @@ class ApiController extends \CController {
      * @return string/boolean       Url to get more information about the
      *                              object.
      */
-    private function getReadLink($controller_name, $hash_id) 
+    private function getReadLink($controller_name, $hash_id)
     {
         return $_SERVER['HTTP_HOST'] . '/' . $controller_name . '/' . $hash_id;
     }
 
     /**
-     * Returns the hash id if it exists in the url, otherwise it returns a 
+     * Returns the hash id if it exists in the url, otherwise it returns a
      * false boolean.
      *
      * @access private
      * @param  string   $controller_name The name of the controller.
      * @return string/boolean            The hash_id or a repsonse that
      *                                   states the url does not have a
-     *                                   hash_id              
+     *                                   hash_id
      */
-    private function getHashID($controller_name) 
+    private function getHashID($controller_name)
     {
 
         $append_redirect = str_replace('/' . $controller_name, '', $_SERVER['REDIRECT_URL']);
@@ -137,7 +137,7 @@ class ApiController extends \CController {
      * @param  integer $status      The HTTP status.
      * @param  string  $contentType The content of the api response.
      */
-    private function generateHeader($status = 200, $contentType = 'application/json') 
+    private function generateHeader($status = 200, $contentType = 'application/json')
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         // set the status
@@ -149,7 +149,7 @@ class ApiController extends \CController {
     /**
      * Gets the message for a status code
      *
-     * @param mixed $status 
+     * @param mixed $status
      * @access private
      * @return string
      */
