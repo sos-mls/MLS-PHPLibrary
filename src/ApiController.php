@@ -3,7 +3,7 @@
 /**
  * Contains the ApiController class, simplifies rendering and reading as a 
  * controller.
- * 
+ *
  * @package Common
  * @author  Christian Micklisch <christian.micklisch@successwithsos.com>
  */
@@ -15,7 +15,7 @@ namespace Common;
  *
  * Extends generic information about rendering JSON data and reading hash_id's
  * from the request of the client.
- * 
+ *
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  * @link   http://www.restapitutorial.com
  */
@@ -68,27 +68,34 @@ class ApiController extends \CController
 
     /**
      * Renders a json object from the data given and sets up the status header.
-     * 
+     *
      * Generates a header dependent on the status given, and creates a json
      * body. Once the body has ended the application ends.
-     * 
+     *
      * @access protected
      * @param  array    $data   The data to be echoed.
      * @param  integer  $status The HTTP status.
      */
-    protected function renderJSON($data, $status = 200) {
+    protected function renderJSON($data, $status = 200) 
+    {
         $this->generateHeader($status);
 
-        if ($status == 200) {
+        if ($status == 200) 
+        {
             echo CJSON::encode($data);
 
-            foreach (Yii::app()->log->routes as $route) {
-                if($route instanceof CWebLogRoute) {
+            foreach (Yii::app()->log->routes as $route) 
+            {
+                if($route instanceof CWebLogRoute) 
+                {
                     $route->enabled = false; // disable any weblogroutes
                 }
             }
+
             Yii::app()->end();
-        } else {
+        } 
+        else 
+        {
             echo CJSON::encode($data);
             Yii::app()->end();
         }
@@ -96,45 +103,50 @@ class ApiController extends \CController
 
     /**
      * Returns a link to get more information about the object.
-     * 
+     *
      * @access private
      * @param  string  $hash_id     The hash_id
      * @return string/boolean       Url to get more information about the
      *                              object.
      */
-    private function getReadLink($controller_name, $hash_id) {
+    private function getReadLink($controller_name, $hash_id) 
+    {
         return $_SERVER['HTTP_HOST'] . '/' . $controller_name . '/' . $hash_id;
     }
 
     /**
      * Returns the hash id if it exists in the url, otherwise it returns a 
      * false boolean.
-     * 
+     *
      * @access private
      * @param  string   $controller_name The name of the controller.
      * @return string/boolean            The hash_id or a repsonse that
      *                                   states the url does not have a
      *                                   hash_id              
      */
-    private function getHashID($controller_name) {
+    private function getHashID($controller_name) 
+    {
 
         $append_redirect = str_replace('/' . $controller_name, '', $_SERVER['REDIRECT_URL']);
-        if (strpos($append_redirect, '/') !== false
-            && empty($_GET)) {
+        if (strpos($append_redirect, '/') !== false && empty($_GET))
+        {
             return str_replace('/', '', $append_redirect);
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
 
     /**
      * Generates the header for the api response.
-     * 
+     *
      * @access private
      * @param  integer $status      The HTTP status.
      * @param  string  $contentType The content of the api response.
      */
-    private function generateHeader($status = 200, $contentType = 'application/json') {
+    private function generateHeader($status = 200, $contentType = 'application/json') 
+    {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         // set the status
         header($status_header);
@@ -144,7 +156,7 @@ class ApiController extends \CController
 
     /**
      * Gets the message for a status code
-     * 
+     *
      * @param mixed $status 
      * @access private
      * @return string

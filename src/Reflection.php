@@ -55,7 +55,7 @@ class Reflection
 	/**
 	 * Gets the property value.
 	 *
-	 * Gets the property 
+	 * Gets the property
 	 *
 	 * @param string $property_name The property to access inside of a class.
 	 * @param string $class_name The name of the class to access, namespace
@@ -100,8 +100,8 @@ class Reflection
 		if ($property->isStatic())
 		{
 			$property->setValue($new_value);
-		} 
-		else 
+		}
+		else
 		{
 			$property->setValue($object, $new_value);
 		}
@@ -181,7 +181,7 @@ class Reflection
 	 *
 	 * Returns the class name that called this current class. If not available
 	 * it will return the name of the current class.
-	 * 
+	 *
 	 * @return string The class name
 	 */
 	private static function getCalledClassName()

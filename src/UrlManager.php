@@ -19,16 +19,15 @@ class UrlManager extends \CUrlManager {
     /**
      * The createUrl method goes and generates the url by using regular expressions
      * meaning that the url and have minus signs to allow for a seperation of words.
-     * 
+     *
      * @param  string  $route      A direction to the called controller and action.
      * @param  array   $params     Parameters of the url (GET's).
      * @param  string  $ampersand  Self explanatory.
      * @return string              The url of the parent.
      */
-    public function createUrl($route = "", array $params = [], $ampersand = '&') 
+    public function createUrl($route = "", array $params = [], $ampersand = '&')
     {
-        $route = preg_replace_callback('/(?<![A-Z])[A-Z]/', function ($matches) 
-        {
+        $route = preg_replace_callback('/(?<![A-Z])[A-Z]/', function ($matches) {
             return '-' . lcfirst($matches[0]);
         }, $route);
         return parent::createUrl($route, $params, $ampersand);
@@ -37,11 +36,11 @@ class UrlManager extends \CUrlManager {
     /**
      * The parseURL method goes and parses the URL to check if there is any information
      * that needs to be removed (spaces and minus signs).
-     *  
+     *
      * @param  CHttpRequest $request The request application component
      * @return string                The filtered url.
      */
-    public function parseUrl($request) 
+    public function parseUrl($request)
     {
         $route = parent::parseUrl($request);
         return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $route))));
