@@ -92,7 +92,7 @@ class ApiController extends \CController {
         }
 
         if ($generateHeader) {
-            \Yii::app()->end();   
+            \Yii::app()->end();
         }
     }
 
@@ -113,7 +113,7 @@ class ApiController extends \CController {
      * false boolean.
      *
      * @param  string $controller_name The name of the controller.
-     * @return string/boolean The hash_id or a repsonse that states the url does 
+     * @return string/boolean The hash_id or a repsonse that states the url does
      *                        not have a hash_id.
      */
     private function getHashID($controller_name)
@@ -140,7 +140,7 @@ class ApiController extends \CController {
         $function = "header";
 
         if (!$generateHeader) {
-            $function = function($string) {
+            $function = function ($string) {
                 echo $string . "\n";
             };
         }
