@@ -43,8 +43,7 @@ class Reflection
     ) {
         $method = self::getReflectionMethod($method_name, $class_name);
 
-        if ($method->isStatic())
-        {
+        if ($method->isStatic()) {
             $object = null;
         }
 

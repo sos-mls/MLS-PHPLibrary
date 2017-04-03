@@ -9,7 +9,7 @@
          syntaxCheck="false"
         >
 	<testsuites>
-        <testsuite name="MILFPHP">
+        <testsuite name="CommonPHP">
             <directory suffix=".php">../tests</directory>
         </testsuite>
     </testsuites>
@@ -24,7 +24,6 @@
     <filter>
         <whitelist>
             <directory suffix=".php">../src</directory>
-            <directory suffix=".php">../tests</directory>
         </whitelist>
     </filter>
 

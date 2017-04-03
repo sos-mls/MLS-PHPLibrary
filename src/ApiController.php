@@ -72,37 +72,36 @@ class ApiController extends \CController {
      * Generates a header dependent on the status given, and creates a json
      * body. Once the body has ended the application ends.
      *
-     * @access protected
      * @param  array    $data   The data to be echoed.
      * @param  integer  $status The HTTP status.
      */
-    protected function renderJSON($data, $status = 200)
+    private function renderJSON(array $data = [], $status = 200, $generateHeader = true)
     {
-        $this->generateHeader($status);
+        $this->generateHeader($status, $generateHeader);
 
         if ($status == 200) {
-            echo CJSON::encode($data);
+            echo \CJSON::encode($data);
 
-            foreach (Yii::app()->log->routes as $route) {
+            foreach (\Yii::app()->log->routes as $route) {
                 if ($route instanceof CWebLogRoute) {
                     $route->enabled = false; // disable any weblogroutes
                 }
             }
-
-            Yii::app()->end();
         } else {
-            echo CJSON::encode($data);
-            Yii::app()->end();
+            echo \CJSON::encode($data);
+        }
+
+        if ($generateHeader) {
+            \Yii::app()->end();   
         }
     }
 
     /**
      * Returns a link to get more information about the object.
      *
-     * @access private
-     * @param  string  $hash_id     The hash_id
-     * @return string/boolean       Url to get more information about the
-     *                              object.
+     * @param  string $controller_name The name of the controller.
+     * @param  string $hash_id The hash_id.
+     * @return string/boolean Url to get more information about the object.
      */
     private function getReadLink($controller_name, $hash_id)
     {
@@ -113,11 +112,9 @@ class ApiController extends \CController {
      * Returns the hash id if it exists in the url, otherwise it returns a
      * false boolean.
      *
-     * @access private
-     * @param  string   $controller_name The name of the controller.
-     * @return string/boolean            The hash_id or a repsonse that
-     *                                   states the url does not have a
-     *                                   hash_id
+     * @param  string $controller_name The name of the controller.
+     * @return string/boolean The hash_id or a repsonse that states the url does 
+     *                        not have a hash_id.
      */
     private function getHashID($controller_name)
     {
@@ -133,28 +130,37 @@ class ApiController extends \CController {
     /**
      * Generates the header for the api response.
      *
-     * @access private
      * @param  integer $status      The HTTP status.
      * @param  string  $contentType The content of the api response.
      */
-    private function generateHeader($status = 200, $contentType = 'application/json')
+    private function generateHeader($status = 200, $generateHeader = true)
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         // set the status
-        header($status_header);
-        header('Content-type: application/json');
+        $function = "header";
+
+        if (!$generateHeader) {
+            $function = function($string) {
+                echo $string . "\n";
+            };
+        }
+
+        $function($status_header);
+        $function('Content-type: application/json');
     }
 
 
     /**
-     * Gets the message for a status code
+     * Gets the message for a status code.
      *
-     * @param mixed $status
-     * @access private
-     * @return string
+     * Can't you read! JEEZUZ! If it can't find the status code inside of the list
+     * of codes then it returns an empty status message.
+     *
+     * @param integer $status A http status code.
+     * @return string The message to go along with the code.
      */
-    private function _getStatusCodeMessage($status)
+    private function _getStatusCodeMessage($status = 100)
     {
-        return (isset($codes[$status])) ? $codes[$status] : '';
+        return (isset($this->codes[$status])) ? $this->codes[$status] : '';
     }
 }
