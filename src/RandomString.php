@@ -11,8 +11,8 @@ namespace Common;
 
 /**
  * RandomString class.
- * 
- * Creates random values from PBKDF2's hasing system and removes unecessary 
+ *
+ * Creates random values from PBKDF2's hasing system and removes unecessary
  * characters from those strings.
  *
  * @author   <christian.micklisch@successwithsos.edu>
@@ -91,7 +91,7 @@ class RandomString extends \CApplicationComponent {
      * Generates the name of a random file
      *
      * Gets a random string and cleans it with the _file_name_clean array.
-     * 
+     *
      * @return string A random file name
      */
     public function fileName()
@@ -103,7 +103,7 @@ class RandomString extends \CApplicationComponent {
      * Creates a Random Hash ID for Sales and Businesses.
      *
      * Gets a random string and cleans it according to the hash_id_clean array.
-     * 
+     *
      * @return string A random hash ID.
      */
     public function hashID()
