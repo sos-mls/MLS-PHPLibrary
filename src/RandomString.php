@@ -89,9 +89,9 @@ class RandomString extends \CApplicationComponent {
 	 *
 	 * Gets a random string and cleans it with the _file_name_clean array.
 	 * 
-	 * @return string 	A random file name
+	 * @return string A random file name
 	 */
-	public function file_name() {
+	public function fileName() {
 		return $this->get_clean_string(self::$_file_name_clean);
 	}
 
@@ -100,9 +100,9 @@ class RandomString extends \CApplicationComponent {
 	 *
 	 * Gets a random string and cleans it according to the hash_id_clean array.
 	 * 
-	 * @return string 	A random hash ID
+	 * @return string A random hash ID.
 	 */
-	public function hash_id() {
+	public function hashID() {
 		return $this->get_clean_string(self::$_hash_id_clean);
 	}
 
@@ -136,7 +136,7 @@ class RandomString extends \CApplicationComponent {
 	 * @param  int 	$id A positive integer.
 	 * @return string 	A hash id from the id given.
 	 */
-	public function short_hash_id($id, $salt = self::SHORT_HASH_SALT) {
+	public function shortHashID($id, $salt = self::SHORT_HASH_SALT) {
 		require_once(dirname(__FILE__) . '/../vendor/hashids/hashids/lib/Hashids/HashGenerator.php');
 		require_once(dirname(__FILE__) . '/../vendor/hashids/hashids/lib/Hashids/Hashids.php');
 

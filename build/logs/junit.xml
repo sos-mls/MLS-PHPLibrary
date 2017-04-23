@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="CommonPHP" tests="21" assertions="36" failures="0" errors="0" time="0.024144">
-    <testsuite name="Common\Test\ApiControllerTest" file="/Users/Fuzzy/milf/milfphp/tests/ApiController.php" tests="7" assertions="7" failures="0" errors="0" time="0.012369">
-      <testsuite name="Common\Test\ApiControllerTest::test_renderJSON" tests="3" assertions="3" failures="0" errors="0" time="0.010049">
-        <testcase name="test_renderJSON with data set #0" assertions="1" time="0.005302"/>
-        <testcase name="test_renderJSON with data set #1" assertions="1" time="0.001872"/>
-        <testcase name="test_renderJSON with data set #2" assertions="1" time="0.002875"/>
+  <testsuite name="CommonPHP" tests="21" assertions="36" failures="0" errors="0" time="0.019639">
+    <testsuite name="Common\Test\ApiControllerTest" file="/Users/Fuzzy/milf/milfphp/tests/ApiController.php" tests="7" assertions="7" failures="0" errors="0" time="0.008173">
+      <testsuite name="Common\Test\ApiControllerTest::test_renderJSON" tests="3" assertions="3" failures="0" errors="0" time="0.005881">
+        <testcase name="test_renderJSON with data set #0" assertions="1" time="0.001991"/>
+        <testcase name="test_renderJSON with data set #1" assertions="1" time="0.001995"/>
+        <testcase name="test_renderJSON with data set #2" assertions="1" time="0.001895"/>
       </testsuite>
-      <testsuite name="Common\Test\ApiControllerTest::test_getReadLink" tests="2" assertions="2" failures="0" errors="0" time="0.001176">
-        <testcase name="test_getReadLink with data set #0" assertions="1" time="0.000659"/>
-        <testcase name="test_getReadLink with data set #1" assertions="1" time="0.000517"/>
+      <testsuite name="Common\Test\ApiControllerTest::test_getReadLink" tests="2" assertions="2" failures="0" errors="0" time="0.001301">
+        <testcase name="test_getReadLink with data set #0" assertions="1" time="0.000819"/>
+        <testcase name="test_getReadLink with data set #1" assertions="1" time="0.000482"/>
       </testsuite>
-      <testsuite name="Common\Test\ApiControllerTest::test_getHashID" tests="2" assertions="2" failures="0" errors="0" time="0.001144">
-        <testcase name="test_getHashID with data set #0" assertions="1" time="0.000601"/>
-        <testcase name="test_getHashID with data set #1" assertions="1" time="0.000543"/>
-      </testsuite>
-    </testsuite>
-    <testsuite name="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" tests="6" assertions="18" failures="0" errors="0" time="0.007893">
-      <testcase name="test_file_name" class="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" line="75" assertions="7" time="0.002874"/>
-      <testcase name="test_hash_id" class="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" line="89" assertions="7" time="0.002631"/>
-      <testsuite name="Common\Test\RandomStringTest::test_short_hash_id" tests="4" assertions="4" failures="0" errors="0" time="0.002388">
-        <testcase name="test_short_hash_id with data set #0" assertions="1" time="0.001225"/>
-        <testcase name="test_short_hash_id with data set #1" assertions="1" time="0.000418"/>
-        <testcase name="test_short_hash_id with data set #2" assertions="1" time="0.000366"/>
-        <testcase name="test_short_hash_id with data set #3" assertions="1" time="0.000378"/>
+      <testsuite name="Common\Test\ApiControllerTest::test_getHashID" tests="2" assertions="2" failures="0" errors="0" time="0.000991">
+        <testcase name="test_getHashID with data set #0" assertions="1" time="0.000634"/>
+        <testcase name="test_getHashID with data set #1" assertions="1" time="0.000357"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" tests="3" assertions="6" failures="0" errors="0" time="0.001297">
-      <testcase name="test_callMethod" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="33" assertions="2" time="0.000413"/>
-      <testcase name="test_private_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="43" assertions="2" time="0.000528"/>
-      <testcase name="test_static_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="55" assertions="2" time="0.000356"/>
-    </testsuite>
-    <testsuite name="Common\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManager.php" tests="5" assertions="5" failures="0" errors="0" time="0.002586">
-      <testsuite name="Common\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.001408">
-        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000345"/>
-        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000699"/>
-        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000364"/>
+    <testsuite name="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" tests="6" assertions="18" failures="0" errors="0" time="0.007247">
+      <testcase name="test_fileName" class="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" line="75" assertions="7" time="0.002650"/>
+      <testcase name="test_hashID" class="Common\Test\RandomStringTest" file="/Users/Fuzzy/milf/milfphp/tests/RandomString.php" line="89" assertions="7" time="0.002422"/>
+      <testsuite name="Common\Test\RandomStringTest::test_shortHashID" tests="4" assertions="4" failures="0" errors="0" time="0.002175">
+        <testcase name="test_shortHashID with data set #0" assertions="1" time="0.001054"/>
+        <testcase name="test_shortHashID with data set #1" assertions="1" time="0.000395"/>
+        <testcase name="test_shortHashID with data set #2" assertions="1" time="0.000375"/>
+        <testcase name="test_shortHashID with data set #3" assertions="1" time="0.000351"/>
       </testsuite>
-      <testsuite name="Common\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.001178">
-        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000602"/>
-        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000576"/>
+    </testsuite>
+    <testsuite name="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" tests="3" assertions="6" failures="0" errors="0" time="0.001590">
+      <testcase name="test_callMethod" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="33" assertions="2" time="0.000355"/>
+      <testcase name="test_private_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="43" assertions="2" time="0.000660"/>
+      <testcase name="test_static_property" class="Common\Test\ReflectionTest" file="/Users/Fuzzy/milf/milfphp/tests/Reflection.php" line="55" assertions="2" time="0.000575"/>
+    </testsuite>
+    <testsuite name="Common\Test\UrlManagerTest" file="/Users/Fuzzy/milf/milfphp/tests/UrlManager.php" tests="5" assertions="5" failures="0" errors="0" time="0.002629">
+      <testsuite name="Common\Test\UrlManagerTest::test_createUrl" tests="3" assertions="3" failures="0" errors="0" time="0.001730">
+        <testcase name="test_createUrl with data set #0" assertions="1" time="0.000741"/>
+        <testcase name="test_createUrl with data set #1" assertions="1" time="0.000628"/>
+        <testcase name="test_createUrl with data set #2" assertions="1" time="0.000361"/>
+      </testsuite>
+      <testsuite name="Common\Test\UrlManagerTest::test_parseUrl" tests="2" assertions="2" failures="0" errors="0" time="0.000899">
+        <testcase name="test_parseUrl with data set #0" assertions="1" time="0.000404"/>
+        <testcase name="test_parseUrl with data set #1" assertions="1" time="0.000495"/>
       </testsuite>
     </testsuite>
   </testsuite>
