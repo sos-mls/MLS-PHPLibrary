@@ -92,7 +92,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getHashID method.
+     * Input method for the getHashID method.
      * 
      * @return array The controller naem, redirect_url, and expected result.
      */

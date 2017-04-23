@@ -12,10 +12,16 @@ During the creation of this Common library I used:
 
 ## Testing Locally ##
 
-To test locally install PHPUnit and imagemagick for php. After their installation simply run:
+To test locally install PHPUnit, mcrypt, and imagemagick for php. After their installation simply run:
 
 ```shell
 $ phpunit -c build/phpunit.xml 
+```
+
+### imagemagick: ###
+
+```shell
+$ brew install php56-imagick
 ```
 
 ### PHPUnit: ###
@@ -24,4 +30,10 @@ $ phpunit -c build/phpunit.xml
 $ wget https://phar.phpunit.de/phpunit-4.8.phar
 $ sudo chmod +x phpunit-4.8.phar
 $ sudo mv phpunit-4.8.phar /usr/local/bin/phpunit
+```
+
+### MCrypt ###
+
+```shell
+$ brew install php56-mcrypt
 ```
