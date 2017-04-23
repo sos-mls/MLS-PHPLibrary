@@ -39,7 +39,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * 
      * @return array The data, status, and expected output for a list of tests.
      */
-    public function input_renderJSON() {
+    public function input_renderJSON()
+    {
         return [
             [ // test default
                 [],
@@ -74,7 +75,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * 
      * @return array The Controller name, hash_id, server host, and expected output.
      */
-    public function input_getReadLink() {
+    public function input_getReadLink()
+    {
         return [
             [ // test default result
                 "",
@@ -96,7 +98,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * 
      * @return array The controller naem, redirect_url, and expected result.
      */
-    public function input_getHashID() {
+    public function input_getHashID()
+    {
         return [
             [ // test default result
                 "",
@@ -118,7 +121,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * Test
      *
      *
-     * 
+     *
      */
 
     /**
@@ -129,7 +132,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider input_renderJSON
      * @runInSeparateProcess
-     * 
+     *
      * @param  array   $data            An array to become a json object.
      * @param  integer $status          The status header.
      * @param  string  $expected_output What renderJSON is to output.
@@ -189,8 +192,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * @param  string $redirect_url    The expected client request.
      * @param  string $result          The hash_id.
      */
-    public function test_getHashID($controller_name = "", $redirect_url = "", $result = "") {
-
+    public function test_getHashID($controller_name = "", $redirect_url = "", $result = "")
+    {
         $_SERVER['REDIRECT_URL'] = $redirect_url;
 
         $apiController = new ApiController(rand(0,1000));

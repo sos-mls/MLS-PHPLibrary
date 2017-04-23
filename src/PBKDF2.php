@@ -28,10 +28,11 @@ define("HASH_PBKDF2_INDEX", 3);
 
 class PBKDF2Hash extends \CApplicationComponent {
 
-    public static function create_hash($password) {
+    public static function createHash($password) 
+    {
         // format: algorithm:iterations:salt:hash
         $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
-        return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" . 
+        return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" .
             base64_encode(PBKDF2Hash::pbkdf2(
                 PBKDF2_HASH_ALGORITHM,
                 $password,
@@ -42,14 +43,15 @@ class PBKDF2Hash extends \CApplicationComponent {
             ));
     }
 
-    public static function validate_password($password, $good_hash) {
+    public static function validatePassword($password, $good_hash) 
+    {
         $params = explode(":", $good_hash);
-        if(count($params) < HASH_SECTIONS) {
-           return false; 
+        if (count($params) < HASH_SECTIONS) {
+            return false;
         }
 
         $pbkdf2 = base64_decode($params[HASH_PBKDF2_INDEX]);
-        return PBKDF2Hash::slow_equals(
+        return PBKDF2Hash::slowEquals(
             $pbkdf2,
             PBKDF2Hash::pbkdf2(
                 $params[HASH_ALGORITHM_INDEX],
@@ -63,14 +65,15 @@ class PBKDF2Hash extends \CApplicationComponent {
     }
 
     // Compares two strings $a and $b in length-constant time.
-    public static function slow_equals($a, $b) {
+    public static function slowEquals($a, $b) 
+    {
         $diff = strlen($a) ^ strlen($b);
 
-        for($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
+        for ($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
             $diff |= ord($a[$i]) ^ ord($b[$i]);
         }
 
-        return $diff === 0; 
+        return $diff === 0;
     }
 
     /*
@@ -88,13 +91,15 @@ class PBKDF2Hash extends \CApplicationComponent {
      * This implementation of PBKDF2 was originally created by https://defuse.ca
      * With improvements by http://www.variations-of-shadow.com
      */
-    public static function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output = false) {
+    public static function pbkdf2($algorithm, $password, $salt, 
+        $count, $key_length, $raw_output = false) {
+
         $algorithm = strtolower($algorithm);
-        if(!in_array($algorithm, hash_algos(), true)) {
+        if (!in_array($algorithm, hash_algos(), true)) {
             die('PBKDF2 ERROR: Invalid hash algorithm.');
         }
 
-        if($count <= 0 || $key_length <= 0) {
+        if ($count <= 0 || $key_length <= 0) {
             die('PBKDF2 ERROR: Invalid parameters.');
         }
 
@@ -102,7 +107,7 @@ class PBKDF2Hash extends \CApplicationComponent {
         $block_count = ceil($key_length / $hash_length);
 
         $output = "";
-        for($i = 1; $i <= $block_count; $i++) {
+        for ($i = 1; $i <= $block_count; $i++) {
             // $i encoded as 4 bytes, big endian.
             $last = $salt . pack("N", $i);
             // first iteration
@@ -114,7 +119,7 @@ class PBKDF2Hash extends \CApplicationComponent {
             $output .= $xorsum;
         }
 
-        if($raw_output) {
+        if ($raw_output) {
             return substr($output, 0, $key_length);
         } else {
             return bin2hex(substr($output, 0, $key_length));

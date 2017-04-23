@@ -38,7 +38,8 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
      * 
      * @return array The id and expected id.
      */
-    public function input_shortHashID() {
+    public function input_shortHashID() 
+    {
         return [
             [ // test default result
                 1,
@@ -72,7 +73,8 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the fileName function.
      */
-    public function test_fileName() {
+    public function test_fileName() 
+    {
         $clean_arr = Reflection::getProperty('_file_name_clean', 'Common\RandomString', $this->_random_str);
         $random_str = new RandomString();
 
@@ -86,7 +88,8 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the hashID function.
      */
-    public function test_hashID() {
+    public function test_hashID() 
+    {
         $clean_arr = Reflection::getProperty('_hash_id_clean', 'Common\RandomString', $this->_random_str);
         $random_str = new RandomString();
 
@@ -105,10 +108,10 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
      * @param  integer $id          The id to hash.
      * @param  string  $expected_id The expected shortHashID.
      */
-    public function test_shortHashID($id = 1, $expected_id = "1z") {
+    public function test_shortHashID($id = 1, $expected_id = "1z") 
+    {
         $random_str = new RandomString();
         $this->assertEquals($expected_id, $random_str->shortHashID($id));
-
     }
 
 }
