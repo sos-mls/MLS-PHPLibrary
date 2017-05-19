@@ -27,6 +27,10 @@ class RandomString extends \CApplicationComponent {
 
     private static $_file_name_clean = [
         [
+            self::FIND_KEY    => "sha256:1000:",
+            self::REPLACE_KEY =>  ""
+        ],
+        [
             self::FIND_KEY    => ':',
             self::REPLACE_KEY =>  '_'
         ],
@@ -50,13 +54,13 @@ class RandomString extends \CApplicationComponent {
             self::FIND_KEY    => "&",
             self::REPLACE_KEY => "_",
         ],
+    ];
+
+    private static $_hash_id_clean = [
         [
             self::FIND_KEY    => "sha256:1000:",
             self::REPLACE_KEY =>  ""
         ],
-    ];
-
-    private static $_hash_id_clean = [
         [
             self::FIND_KEY    => ':',
             self::REPLACE_KEY =>  ''
@@ -80,10 +84,6 @@ class RandomString extends \CApplicationComponent {
         [
             self::FIND_KEY    => "&",
             self::REPLACE_KEY => "_",
-        ],
-        [
-            self::FIND_KEY    => "sha256:1000:",
-            self::REPLACE_KEY =>  ""
         ],
     ];
 
