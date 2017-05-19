@@ -3,3 +3,4 @@
 runtime/*.log
 vendor
 composer.lock
+build/logs
