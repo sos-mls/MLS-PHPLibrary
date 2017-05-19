@@ -6,7 +6,10 @@ $config=dirname(__FILE__).'/../config/test.php';
 
 require_once($yiit);
 // require all src files
-$files = glob(dirname(__FILE__).'/../src/*.php');
+$files = array_merge(
+    glob(dirname(__FILE__).'/../src/*.php'),
+    glob(dirname(__FILE__) . '/../vendor/fufu70/reflection-class/src/*.php')
+);
 
 foreach ($files as $file) {
     require_once($file);   

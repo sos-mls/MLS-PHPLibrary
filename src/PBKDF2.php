@@ -28,7 +28,7 @@ define("HASH_PBKDF2_INDEX", 3);
 
 class PBKDF2Hash extends \CApplicationComponent {
 
-    public static function createHash($password) 
+    public static function createHash($password)
     {
         // format: algorithm:iterations:salt:hash
         $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
@@ -43,7 +43,7 @@ class PBKDF2Hash extends \CApplicationComponent {
             ));
     }
 
-    public static function validatePassword($password, $good_hash) 
+    public static function validatePassword($password, $good_hash)
     {
         $params = explode(":", $good_hash);
         if (count($params) < HASH_SECTIONS) {
@@ -65,7 +65,7 @@ class PBKDF2Hash extends \CApplicationComponent {
     }
 
     // Compares two strings $a and $b in length-constant time.
-    public static function slowEquals($a, $b) 
+    public static function slowEquals($a, $b)
     {
         $diff = strlen($a) ^ strlen($b);
 
@@ -97,8 +97,8 @@ class PBKDF2Hash extends \CApplicationComponent {
         $salt,
         $count,
         $key_length,
-        $raw_output = false)
-    {
+        $raw_output = false
+    ) {
 
         $algorithm = strtolower($algorithm);
         if (!in_array($algorithm, hash_algos(), true)) {
