@@ -75,7 +75,7 @@ class ApiController extends \CController {
      * @param  array    $data   The data to be echoed.
      * @param  integer  $status The HTTP status.
      */
-    private function renderJSON(array $data = [], $status = 200, $generateHeader = true)
+    protected function renderJSON(array $data = [], $status = 200, $generateHeader = true)
     {
         $this->generateHeader($status, $generateHeader);
 
@@ -103,7 +103,7 @@ class ApiController extends \CController {
      * @param  string $hash_id The hash_id.
      * @return string/boolean Url to get more information about the object.
      */
-    private function getReadLink($controller_name, $hash_id)
+    protected function getReadLink($controller_name, $hash_id)
     {
         return $_SERVER['HTTP_HOST'] . '/' . $controller_name . '/' . $hash_id;
     }
@@ -116,7 +116,7 @@ class ApiController extends \CController {
      * @return string/boolean The hash_id or a repsonse that states the url does
      *                        not have a hash_id.
      */
-    private function getHashID($controller_name)
+    protected function getHashID($controller_name)
     {
 
         $append_redirect = str_replace('/' . $controller_name, '', $_SERVER['REDIRECT_URL']);
