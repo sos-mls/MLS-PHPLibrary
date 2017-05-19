@@ -142,7 +142,6 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
         $status = 200, 
         $expected_output = "HTTP/1.1 200 OK\nContent-type: application/json\n[]"
     ) {
-
         $this->expectOutputString($expected_output);
         
         $apiController = new ApiController(rand(0,1000));

@@ -67,7 +67,7 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
      * Test
      *
      *
-     * 
+     *
      */
 
     /**
@@ -102,9 +102,9 @@ class RandomStringTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests the shortHashID function.
-     * 
+     *
      * @dataProvider input_shortHashID
-     * 
+     *
      * @param  integer $id          The id to hash.
      * @param  string  $expected_id The expected shortHashID.
      */
