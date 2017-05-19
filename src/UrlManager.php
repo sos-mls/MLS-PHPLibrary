@@ -25,7 +25,7 @@ class UrlManager extends \CUrlManager {
      * @param  string  $ampersand  Self explanatory.
      * @return string              The url of the parent.
      */
-    public function createUrl($route, $params = array(), $ampersand = '&')
+    public function createUrl($route = "", $params = [], $ampersand = '&')
     {
         $route = preg_replace_callback('/(?<![A-Z])[A-Z]/', function ($matches) {
             return '-' . lcfirst($matches[0]);
