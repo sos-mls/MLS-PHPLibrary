@@ -1,5 +1,7 @@
 {
-    "name": "skeleton",
+    "name": "milf/common-php",
+    "type": "library",
+    "license": "MIT",
     "repositories": [
         { 
           "type": "vcs", 
