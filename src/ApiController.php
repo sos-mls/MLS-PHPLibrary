@@ -113,7 +113,8 @@ class ApiController extends \CController {
     /**
      * Returns the hash id if it exists in the url, otherwise it returns a false.
      *
-     * The HashID is in the url if the $_GET variable is empty or the 
+     * The HashID is in the url if the $_GET variable is empty or the hash id is the only
+     * key in the array.
      *
      * @param  string $route_name The route to the controller and action.
      * @return string/boolean     The hash_id or a repsonse that states the url does
@@ -124,8 +125,11 @@ class ApiController extends \CController {
 
         $append_redirect = str_replace('/' . $route_name, '', $_SERVER['REDIRECT_URL']);
         $url_has_append = strpos($append_redirect, '/') !== false;
-        $is_get_empty = empty($_GET) || array_key_exists(str_replace('/', '', $append_redirect), $_GET);
-        if ($url_has_append && $is_get_empty) {
+        $is_get_empty = empty($_GET);
+        $is_hash_id_in_get = array_key_exists(str_replace('/', '', $append_redirect), $_GET);
+        $is_hash_id_only_get = $is_hash_id_in_get && sizeof($_GET) == 1;
+
+        if ($url_has_append && ($is_get_empty || $is_hash_id_only_get)) {
             return str_replace('/', '', $append_redirect);
         } else {
             return false;
@@ -137,7 +141,7 @@ class ApiController extends \CController {
      *
      * Generates the status header, creates a function to echo out the header and
      * the current content-type "application/json"
-     * 
+     *
      * @param  integer $status      The HTTP status.
      * @param  string  $contentType The content of the api response.
      */

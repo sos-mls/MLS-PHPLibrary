@@ -124,8 +124,11 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
             [
                 "read/image",
                 "/read/image/qq9SGFC82xMB6D8hnTc",
-                null,
-                "qq9SGFC82xMB6D8hnTc"
+                [
+                    "qq9SGFC82xMB6D8hnTc" => "",
+                    "other_get_value"     => "should not pass"
+                ],
+                false
             ]
         ];
     }
