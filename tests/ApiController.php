@@ -104,12 +104,22 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
             [ // test default result
                 "",
                 "",
+                [],
                 false
             ],
             [
                 "shrekoning",
                 "/default_hash_id",
+                [],
                 "default_hash_id"
+            ],
+            [
+                "read/image",
+                "/read/image/qq9SGFC82xMB6D8hnTc",
+                [
+                    "qq9SGFC82xMB6D8hnTc" => ""
+                ],
+                "qq9SGFC82xMB6D8hnTc"
             ]
         ];
     }
@@ -187,18 +197,24 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      *
      * @dataProvider input_getHashID
      * 
-     * @param  string $controller_name The name of the controller.
-     * @param  string $redirect_url    The expected client request.
-     * @param  string $result          The hash_id.
+     * @param  string $route_name   The controller and action name.
+     * @param  string $redirect_url The expected client request.
+     * @param  string $result       The hash_id.
      */
-    public function test_getHashID($controller_name = "", $redirect_url = "", $result = "")
-    {
+    public function test_getHashID(
+        $route_name = "", 
+        $redirect_url = "", 
+        array $get = [], 
+        $result = ""
+    ) {
         $_SERVER['REDIRECT_URL'] = $redirect_url;
+
+        $_GET = $get;
 
         $apiController = new ApiController(rand(0,1000));
 
         $hash_id = Reflection::callMethod('getHashID', 'Common\ApiController', [
-            $controller_name
+            $route_name
         ], $apiController);
 
         $this->assertEquals($result, $hash_id);

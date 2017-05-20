@@ -99,28 +99,37 @@ class ApiController extends \CController {
     /**
      * Returns a link to get more information about the object.
      *
-     * @param  string $controller_name The name of the controller.
-     * @param  string $hash_id The hash_id.
-     * @return string/boolean Url to get more information about the object.
+     * Creates a link based off of the route given and the hash id to hash.
+     *
+     * @param  string $route_name The route to the controller and action.
+     * @param  string $hash_id    The hash_id.
+     * @return string/boolean     Url to get more information about the object.
      */
-    protected function getReadLink($controller_name, $hash_id)
+    protected function getReadLink($route_name, $hash_id)
     {
-        return $_SERVER['HTTP_HOST'] . '/' . $controller_name . '/' . $hash_id;
+        return $_SERVER['HTTP_HOST'] . '/' . $route_name . '/' . $hash_id;
     }
 
     /**
-     * Returns the hash id if it exists in the url, otherwise it returns a
-     * false boolean.
+     * Returns the hash id if it exists in the url, otherwise it returns a false.
      *
-     * @param  string $controller_name The name of the controller.
-     * @return string/boolean The hash_id or a repsonse that states the url does
-     *                        not have a hash_id.
+     * The HashID is in the url if the $_GET variable is empty or the 
+     *
+     * @param  string $route_name The route to the controller and action.
+     * @return string/boolean     The hash_id or a repsonse that states the url does
+     *                            not have a hash_id.
      */
-    protected function getHashID($controller_name)
+    protected function getHashID($route_name)
     {
 
-        $append_redirect = str_replace('/' . $controller_name, '', $_SERVER['REDIRECT_URL']);
-        if (strpos($append_redirect, '/') !== false && empty($_GET)) {
+        $append_redirect = str_replace('/' . $route_name, '', $_SERVER['REDIRECT_URL']);
+        if (
+            strpos($append_redirect, '/') !== false && 
+                (
+                    empty($_GET) || 
+                    array_key_exists(str_replace('/', '', $append_redirect), $_GET)
+                )
+            ) {
             return str_replace('/', '', $append_redirect);
         } else {
             return false;
@@ -130,6 +139,9 @@ class ApiController extends \CController {
     /**
      * Generates the header for the api response.
      *
+     * Generates the status header, creates a function to echo out the header and
+     * the current content-type "application/json"
+     * 
      * @param  integer $status      The HTTP status.
      * @param  string  $contentType The content of the api response.
      */
