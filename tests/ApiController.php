@@ -199,6 +199,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      * 
      * @param  string $route_name   The controller and action name.
      * @param  string $redirect_url The expected client request.
+     * @param  array  $get          The expected $_GET array.
      * @param  string $result       The hash_id.
      */
     public function test_getHashID(
