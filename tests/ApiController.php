@@ -120,6 +120,12 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                     "qq9SGFC82xMB6D8hnTc" => ""
                 ],
                 "qq9SGFC82xMB6D8hnTc"
+            ],
+            [
+                "read/image",
+                "/read/image/qq9SGFC82xMB6D8hnTc",
+                [],
+                "qq9SGFC82xMB6D8hnTc"
             ]
         ];
     }
