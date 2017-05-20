@@ -123,12 +123,11 @@ class ApiController extends \CController {
     {
 
         $append_redirect = str_replace('/' . $route_name, '', $_SERVER['REDIRECT_URL']);
-        
+
         if (
             strpos($append_redirect, '/') !== false && 
                 (
-                    empty($_GET) || 
-                    array_key_exists(str_replace('/', '', $append_redirect), $_GET)
+                    empty($_GET) || array_key_exists(str_replace('/', '', $append_redirect), $_GET)
                 )
             ) {
             return str_replace('/', '', $append_redirect);

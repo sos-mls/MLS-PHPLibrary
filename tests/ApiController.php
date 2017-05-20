@@ -124,7 +124,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
             [
                 "read/image",
                 "/read/image/qq9SGFC82xMB6D8hnTc",
-                [],
+                null,
                 "qq9SGFC82xMB6D8hnTc"
             ]
         ];
@@ -211,7 +211,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function test_getHashID(
         $route_name = "", 
         $redirect_url = "", 
-        array $get = [], 
+        $get = [], 
         $result = ""
     ) {
         $_SERVER['REDIRECT_URL'] = $redirect_url;
