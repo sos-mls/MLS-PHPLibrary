@@ -66,6 +66,8 @@ class ApiController extends \CController {
         505 => 'HTTP Version Not Supported'
     ];
 
+    protected $generateHeader = true;
+
     /**
      * Renders a json object from the data given and sets up the status header.
      *
@@ -75,9 +77,9 @@ class ApiController extends \CController {
      * @param  array    $data   The data to be echoed.
      * @param  integer  $status The HTTP status.
      */
-    protected function renderJSON(array $data = [], $status = 200, $generateHeader = true)
+    protected function renderJSON(array $data = [], $status = 200)
     {
-        $this->generateHeader($status, $generateHeader);
+        $this->generateHeader($status, $this->generateHeader);
 
         if ($status == 200) {
             echo \CJSON::encode($data);
@@ -91,7 +93,7 @@ class ApiController extends \CController {
             echo \CJSON::encode($data);
         }
 
-        if ($generateHeader) {
+        if ($this->generateHeader) {
             \Yii::app()->end();
         }
     }
