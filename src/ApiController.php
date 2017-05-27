@@ -163,7 +163,7 @@ class ApiController extends \CController {
      * @param  string  $headerString        The output of the header
      * @param  boolean $allowGenerateHeader Allow the header to be generated.
      */
-    private function generateHeader($headerString, $allowGenerateHeader)
+    protected function generateHeader($headerString, $allowGenerateHeader)
     {
         $function = "header";
 

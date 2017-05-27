@@ -189,7 +189,6 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
         $host_name = "", 
         $read_link = ""
     ) {
-
         $_SERVER['HTTP_HOST'] = $host_name;
 
         $apiController = new ApiController(rand(0,1000));
