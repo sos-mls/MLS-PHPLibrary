@@ -99,6 +99,30 @@ class ApiController extends \CController {
     }
 
     /**
+     * Renders a JSON erorr response.
+     * 
+     * Returns a json response in a proper error format to let the 
+     * front notify the user a solution to the problem.
+     * 
+     * @param  array|string $errors The errors that occured.
+     * @param  integer      $http_code The code to send to the user.
+     */
+    private function renderJSONError($errors, $http_code = 424) 
+    {
+        if (is_array($errors)) {
+            $this->renderJSON([
+                'errors' => $errors
+            ], $http_code);
+        } else {
+            $this->renderJSON([
+                'errors' => [
+                    'general' => [$errors]
+                ]
+            ], $http_code);
+        }
+    }
+
+    /**
      * Returns a link to get more information about the object.
      *
      * Creates a link based off of the route given and the hash id to hash.
