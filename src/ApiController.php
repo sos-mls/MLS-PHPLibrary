@@ -79,7 +79,7 @@ class ApiController extends \CController {
      */
     protected function renderJSON(array $data = [], $status = 200)
     {
-        $this->generateApiHeader($status, $this->allowGenerateHeader);
+        $this->generateApiHeader($status);
 
         if ($status == 200) {
             echo \CJSON::encode($data);
@@ -144,15 +144,14 @@ class ApiController extends \CController {
      * Generates the status header, creates a function to echo out the header and
      * the current content-type "application/json"
      *
-     * @param  integer $status              The HTTP status.
-     * @param  boolean $allowGenerateHeader Allow the header to be generated.
+     * @param  integer $status The HTTP status.
      */
-    private function generateApiHeader($status = 200, $allowGenerateHeader = true)
+    private function generateApiHeader($status = 200)
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
 
-        $this->generateHeader($status_header, $allowGenerateHeader);
-        $this->generateHeader('Content-type: application/json', $allowGenerateHeader);
+        $this->generateHeader($status_header);
+        $this->generateHeader('Content-type: application/json');
     }
 
     /**
@@ -160,14 +159,13 @@ class ApiController extends \CController {
      *
      * Outputs the header only when the generation is allowed, otherwise echo the header.
      *
-     * @param  string  $headerString        The output of the header
-     * @param  boolean $allowGenerateHeader Allow the header to be generated.
+     * @param  string $headerString The output of the header
      */
-    protected function generateHeader($headerString, $allowGenerateHeader)
+    protected function generateHeader($headerString)
     {
         $function = "header";
 
-        if (!$allowGenerateHeader) {
+        if (!$this->allowGenerateHeader) {
             $function = function ($string) {
                 echo $string . "\n";
             };
