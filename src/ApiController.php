@@ -107,7 +107,7 @@ class ApiController extends \CController {
      * @param  array|string $errors The errors that occured.
      * @param  integer      $http_code The code to send to the user.
      */
-    private function renderJSONError($errors, $http_code = 424) 
+    protected function renderJSONError($errors, $http_code = 424) 
     {
         if (is_array($errors)) {
             $this->renderJSON([
