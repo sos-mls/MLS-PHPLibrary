@@ -66,7 +66,7 @@ class ApiController extends \CController {
         505 => 'HTTP Version Not Supported'
     ];
 
-    protected $generateHeader = true;
+    protected $allowGenerateHeader = true;
 
     /**
      * Renders a json object from the data given and sets up the status header.
@@ -79,7 +79,7 @@ class ApiController extends \CController {
      */
     protected function renderJSON(array $data = [], $status = 200)
     {
-        $this->generateHeader($status, $this->generateHeader);
+        $this->generateApiHeader($status, $this->allowGenerateHeader);
 
         if ($status == 200) {
             echo \CJSON::encode($data);
@@ -93,7 +93,7 @@ class ApiController extends \CController {
             echo \CJSON::encode($data);
         }
 
-        if ($this->generateHeader) {
+        if ($this->allowGenerateHeader) {
             \Yii::app()->end();
         }
     }
@@ -144,23 +144,36 @@ class ApiController extends \CController {
      * Generates the status header, creates a function to echo out the header and
      * the current content-type "application/json"
      *
-     * @param  integer $status      The HTTP status.
-     * @param  string  $contentType The content of the api response.
+     * @param  integer $status              The HTTP status.
+     * @param  boolean $allowGenerateHeader Allow the header to be generated.
      */
-    private function generateHeader($status = 200, $generateHeader = true)
+    private function generateApiHeader($status = 200, $allowGenerateHeader = true)
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
-        // set the status
+
+        $this->generateHeader($status_header, $allowGenerateHeader);
+        $this->generateHeader('Content-type: application/json', $allowGenerateHeader);
+    }
+
+    /**
+     * Generates the header of the server.
+     *
+     * Outputs the header only when the generation is allowed, otherwise echo the header.
+     *
+     * @param  string  $headerString        The output of the header
+     * @param  boolean $allowGenerateHeader Allow the header to be generated.
+     */
+    private function generateHeader($headerString, $allowGenerateHeader)
+    {
         $function = "header";
 
-        if (!$generateHeader) {
+        if (!$allowGenerateHeader) {
             $function = function ($string) {
                 echo $string . "\n";
             };
         }
 
-        $function($status_header);
-        $function('Content-type: application/json');
+        $function($headerString);
     }
 
 

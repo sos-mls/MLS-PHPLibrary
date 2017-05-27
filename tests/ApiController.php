@@ -165,7 +165,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
         
         $apiController = new ApiController(rand(0,1000));
 
-        Reflection::setProperty('generateHeader', 'Common\ApiController', $apiController, false);
+        Reflection::setProperty('allowGenerateHeader', 'Common\ApiController', $apiController, false);
 
         Reflection::callMethod('renderJSON', 'Common\ApiController', [
             $data,
