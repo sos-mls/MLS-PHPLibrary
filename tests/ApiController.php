@@ -71,6 +71,42 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Input array for the renderJSONError method.
+     * 
+     * @return array The error, its http type, and the expected output.
+     */
+    public function input_renderJSONError()
+    {
+        return [
+            [
+                'This is a general Error',
+                424,
+                "HTTP/1.1 424 \n" .
+                "Content-type: application/json\n" .
+                '{"errors":{"general":["This is a general Error"]}}'
+            ],
+            [
+                'This is a general server error',
+                500,
+                "HTTP/1.1 500 Internal Server Error\n" .
+                "Content-type: application/json\n" .
+                '{"errors":{"general":["This is a general server error"]}}'
+            ],
+            [
+                [
+                    'sometimes errors happen in threes',
+                    'sometimes errors happen in twos',
+                    'Site is temporarily Unavailable',
+                ],
+                503,
+                "HTTP/1.1 503 Service Unavailable\n" .
+                "Content-type: application/json\n" .
+                '{"errors":["sometimes errors happen in threes","sometimes errors happen in twos","Site is temporarily Unavailable"]}'
+            ]
+        ];
+    }
+
+    /**
      * Input method for the getReadLink method.
      * 
      * @return array The Controller name, hash_id, server host, and expected output.
@@ -169,6 +205,36 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
 
         Reflection::callMethod('renderJSON', 'Common\ApiController', [
             $data,
+            $status
+        ], $apiController);
+    }
+
+    /**
+     * Checks that the output of the renderJSONError matches the expected output given.
+     *
+     * Tests the renderJSONError method to product a proper header and body from the given
+     * error and status.
+     *
+     * @dataProvider input_renderJSONError
+     * @runInSeparateProcess
+     *
+     * @param  array|string $error           The error to give.
+     * @param  integer      $status          The status header.
+     * @param  string       $expected_output What renderJSONError is to output.
+     */
+    public function test_renderJSONError(
+        $error = "", 
+        $status = 200, 
+        $expected_output = "HTTP/1.1 424 OK\nContent-type: application/json\n[]"
+    ) {
+        $this->expectOutputString($expected_output);
+        
+        $apiController = new ApiController(rand(0,1000));
+
+        Reflection::setProperty('allowGenerateHeader', 'Common\ApiController', $apiController, false);
+
+        Reflection::callMethod('renderJSONError', 'Common\ApiController', [
+            $error,
             $status
         ], $apiController);
     }
